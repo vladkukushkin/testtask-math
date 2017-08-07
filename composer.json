@@ -1,5 +1,5 @@
 {
-    "name": "testtask-math",
+    "name": "achertovsky/testtask-math",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.4"
