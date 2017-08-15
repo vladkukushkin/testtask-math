@@ -55,8 +55,7 @@ class Math extends \yii\db\ActiveRecord
         return [
             [['task', 'result'], 'required'],
             [['task', 'operation'], 'string'],
-            ['result', 'integer'],
-            [['a', 'b'], 'integer'],
+            [['a', 'b', 'result'], 'number', 'numberPattern' => '/^\s*[-+]?[0-9]*[.,]?[0-9]+([eE][-+]?[0-9]+)?\s*$/'],
         ];
     }
 
@@ -80,6 +79,8 @@ class Math extends \yii\db\ActiveRecord
             throw new \yii\base\ErrorException(var_export($this->getErrors(), true));
         }
         $this->operation = '+';
+        $this->a = str_replace(",", ".", $this->a);
+        $this->b = str_replace(",", ".", $this->b);
         $this->result = $this->a+$this->b;
         if ($this->save()) {
             return $this->result;
@@ -107,6 +108,8 @@ class Math extends \yii\db\ActiveRecord
             throw new \yii\base\ErrorException(var_export($this->getErrors(), true));
         }
         $this->operation = '-';
+        $this->a = str_replace(",", ".", $this->a);
+        $this->b = str_replace(",", ".", $this->b);
         $this->result = $this->a-$this->b;
         if ($this->save()) {
             return $this->result;
@@ -123,6 +126,7 @@ class Math extends \yii\db\ActiveRecord
         if (parent::beforeSave($insert)) {
             $this->setScenario('result');
             $this->task = $this->a.$this->operation.$this->b;
+            return true;
         }
         return false;
     }
