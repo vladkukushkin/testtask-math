@@ -12,7 +12,7 @@ class m170804_133419_math extends Migration
                 [
                     'id' => $this->primaryKey(),
                     'task' => $this->string(),
-                    'result' => $this->integer(),
+                    'result' => $this->decimal(10, 1),
                 ]
             );
         }
