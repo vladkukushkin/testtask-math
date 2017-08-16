@@ -5,6 +5,7 @@ namespace vladkukushkin\math\models;
 use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "math".
+ * @property int $id
  * @property double $a
  * @property double $b
  * @property string $task
@@ -132,6 +133,7 @@ class Math extends \yii\db\ActiveRecord
         if (parent::beforeSave($insert)) {
             $this->setScenario('result');
             $this->task = $this->a.$this->operation.$this->b;
+            $this->user_id = Yii::$app->user->id;
             return true;
         }
         return false;
