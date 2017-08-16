@@ -1,8 +1,15 @@
 {
     "name": "vladkukushkin/testtask-math",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/vladkukushkin/testtask-math"
+        }
+    ],
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": ">=2.0.4"
+        "yiisoft/yii2": ">=2.0.4",
+        "achertovsky/testtask-math": "*"
     },
     "autoload": {
         "psr-4": {
