@@ -10,7 +10,7 @@ use yii\helpers\ArrayHelper;
  * @property string $task
  * @property double $result
  * @property integer $user_id
- * @property string $user_result
+ * @property double $user_result
  * @property boolean $is_correct
  * @property boolean $is_finished
  */
@@ -59,17 +59,17 @@ class Math extends \yii\db\ActiveRecord
         return [
             [['task', 'result', 'user_result', 'user_id'], 'required'],
             ['user_result', 'trim'],
-            [['task', 'operation', 'user_result'], 'string'],
+            [['task', 'operation'], 'string'],
             ['user_id', 'integer'],
-            [['a', 'b', 'result'], 'number'],
+            [['a', 'b', 'result', 'user_result'], 'double'],
             [['is_correct', 'is_finished'], 'boolean'],
         ];
     }
 
     /**
      * Making adding operation
-     * @param int $a
-     * @param int $b
+     * @param double $a
+     * @param double $b
      * @return int|null
      * @throws \yii\base\ErrorException
      */
@@ -95,8 +95,8 @@ class Math extends \yii\db\ActiveRecord
     
     /**
      * Making subtraction operation
-     * @param int $a
-     * @param int $b
+     * @param double $a
+     * @param double $b
      * @return int|null
      * @throws \yii\base\ErrorException
      */
@@ -121,7 +121,7 @@ class Math extends \yii\db\ActiveRecord
     }
     
     /**
-     * Making preparements before save to db
+     * Making preparations before save to db
      * @inheritdoc
      */
     public function beforeSave($insert)
