@@ -15,8 +15,8 @@ class m170804_133419_math extends Migration
                     'task' => $this->string(),
                     'result' => $this->decimal(10, 1),
                     'user_result' => $this->decimal(10, 1),
-                    'is_correct' => $this->boolean(),
-                    'is_finished' => $this->boolean(),
+                    'is_correct' => $this->boolean()->defaultValue(false),
+                    'is_finished' => $this->boolean()->defaultValue(false),
                 ]
             );
         }
