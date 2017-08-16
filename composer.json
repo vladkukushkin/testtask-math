@@ -1,12 +1,21 @@
 {
-    "name": "achertovsky/testtask-math",
+    "name": "vladkukushkin/testtask-math",
+    "homepage": "https://github.com/vladkukushkin/testtask-math",
+    "type": "yii2-extension",
+    "license": "BSD 3-Clause",
+    "authors": [
+        {
+            "name": "Vladislav Kukushkin",
+            "email": "vladkuk7070@gmail.com"
+        }
+    ],
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.4"
     },
     "autoload": {
         "psr-4": {
-            "achertovsky\\math\\": ""
+            "vladkukushkin\\math\\": ""
         }
     }
 }

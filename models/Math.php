@@ -1,23 +1,27 @@
 <?php
 
-namespace achertovsky\math\models;
+namespace vladkukushkin\math\models;
 
 use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "math".
- * @property integer $a
- * @property integer $b
+ * @property double $a
+ * @property double $b
  * @property string $task
- * @property integer $result
+ * @property double $result
+ * @property integer $user_id
+ * @property string $user_result
+ * @property boolean $is_correct
+ * @property boolean $is_finished
  */
 class Math extends \yii\db\ActiveRecord
 {
     /**
-     * @var int
+     * @var double
      */
     public $a;
     /**
-     * @var int
+     * @var double
      */
     public $b;
     /**
@@ -53,10 +57,12 @@ class Math extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['task', 'result'], 'required'],
-            [['task', 'operation'], 'string'],
-            ['result', 'integer'],
-            [['a', 'b'], 'integer'],
+            [['task', 'result', 'user_result', 'user_id'], 'required'],
+            ['user_result', 'trim'],
+            [['task', 'operation', 'user_result'], 'string'],
+            ['user_id', 'integer'],
+            [['a', 'b', 'result'], 'number'],
+            [['is_correct', 'is_finished'], 'boolean'],
         ];
     }
 
@@ -123,6 +129,7 @@ class Math extends \yii\db\ActiveRecord
         if (parent::beforeSave($insert)) {
             $this->setScenario('result');
             $this->task = $this->a.$this->operation.$this->b;
+            return true;
         }
         return false;
     }
