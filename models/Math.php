@@ -28,7 +28,10 @@ class Math extends \yii\db\ActiveRecord
      * @var string
      */
     public $operation;
-    
+
+    const ACTION_ADD = '+';
+    const ACTION_SUB = '-';
+
     /**
      * @inheritdoc
      */
@@ -85,7 +88,7 @@ class Math extends \yii\db\ActiveRecord
         if (!$this->validate()) {
             throw new \yii\base\ErrorException(var_export($this->getErrors(), true));
         }
-        $this->operation = '+';
+        $this->operation = self::ACTION_ADD;
         $this->result = $this->a+$this->b;
         if ($this->save()) {
             return $this->result;
@@ -112,7 +115,7 @@ class Math extends \yii\db\ActiveRecord
         if (!$this->validate()) {
             throw new \yii\base\ErrorException(var_export($this->getErrors(), true));
         }
-        $this->operation = '-';
+        $this->operation = self::ACTION_SUB;
         $this->result = $this->a-$this->b;
         if ($this->save()) {
             return $this->result;
