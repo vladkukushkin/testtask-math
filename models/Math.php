@@ -133,7 +133,7 @@ class Math extends \yii\db\ActiveRecord
         if (parent::beforeSave($insert)) {
             $this->setScenario('result');
             $this->task = $this->a.$this->operation.$this->b;
-            $this->user_id = Yii::$app->user->id;
+            $this->user_id = \Yii::$app->user->id;
             return true;
         }
         return false;
