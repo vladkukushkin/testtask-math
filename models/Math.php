@@ -134,6 +134,9 @@ class Math extends \yii\db\ActiveRecord
             $this->setScenario('result');
             $this->task = $this->a.$this->operation.$this->b;
             $this->user_id = \Yii::$app->user->id;
+            $this->is_correct = (string)$this->result == \Yii::$app->formatter->asDecimal($this->user_result, 1)
+                ? true
+                : false;
             return true;
         }
         return false;
